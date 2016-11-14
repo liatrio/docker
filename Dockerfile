@@ -77,11 +77,12 @@ USER root
 RUN mkdir -p /var/jenkins_home
 RUN chown -R 1001:1001 /var/jenkins_home
 
+RUN mkdir -p /root/.m2
+COPY settings.xml /root/.m2/settings.xml
+
 USER jenkins 
 COPY hudson.tasks.Maven.xml /var/jenkins_home/hudson.tasks.Maven.xml
 
-RUN mkdir -p /root/m2
-COPY settings.xml /root/.m2/settings.xml
 
 USER root
 RUN chown -R 1001:1001 /var/jenkins_home
